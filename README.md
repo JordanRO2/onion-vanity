@@ -88,12 +88,20 @@ onion-vanity verify $HOME/onion-keys/<address>.onion -p hello
 
 ## Expected time
 
-Each character multiplies the work by 32. Mean time to the first key at ~8.3 G/s on an RTX 5080
+Each character multiplies the work by 32. Mean time to the first key with onion-vanity at ~8.3 G/s
+on an RTX 5080 and with mkp224o at ~135 M/s on a Ryzen 9 9950X3D, both measured on the same machine
 (the wait is exponential: p90 ≈ 2.3× the mean):
 
-| Characters | 5–6 | 7 | 8 | 9 | 10 | 11 | 12 |
-|---|---|---|---|---|---|---|---|
-| Mean | < 1 s | ~4 s | ~2 min | ~70 min | ~1.6 days | ~50 days | ~4.4 years |
+| Characters | onion-vanity | mkp224o |
+|---|---|---|
+| 5 | < 0.01 s | 0.25 s |
+| 6 | 0.13 s | 8 s |
+| 7 | 4 s | 4 min |
+| 8 | 2 min | 2.3 h |
+| 9 | 1.2 h | 3 days |
+| 10 | 1.6 days | 97 days |
+| 11 | 50 days | 8.5 years |
+| 12 | 4.4 years | 271 years |
 
 Other cards scale with their rate: `bench`, or the first status line of a run, gives your own figure.
 
