@@ -1,0 +1,7 @@
+[workspace]
+resolver = "2"
+members = ["crates/onion-vanity", "crates/ov-gpu"]
+
+# Keep unwinding on panic so Drop runs and the Zeroizing secret buffers are wiped.
+[profile.release]
+panic = "unwind"

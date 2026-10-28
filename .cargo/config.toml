@@ -1,0 +1,5 @@
+# The exe's static imports (VCRUNTIME140.dll) are resolved before main() runs,
+# so harden_dll_search() is too late for them; this load-config flag makes the loader take them from
+# System32 only, never from the exe's folder.
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "link-arg=/DEPENDENTLOADFLAG:0x800"]

@@ -1,0 +1,17 @@
+[package]
+name = "ov-gpu"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# std: DriverError: std::error::Error (so `?` works). nvrtc: gates the safe CudaContext::load_module
+# (loaded lazily — nvrtc.dll is never opened unless a compile fn is called).
+cudarc = { version = "0.19", default-features = false, features = ["std", "driver", "nvrtc", "dynamic-loading", "cuda-13040"] }
+
+[build-dependencies]
+cc = "1"
+sha2 = "0.10"
+
+[dev-dependencies]
+num-bigint = "0.4"
+curve25519-dalek = "4"
